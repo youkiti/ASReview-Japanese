@@ -29,6 +29,36 @@
 >
 > **オリジナル版**: [asreview/asreview](https://github.com/asreview/asreview)
 
+## 日本語版インストール方法
+
+### GitHub から直接インストール
+
+フォーク版（日本語化）を GitHub から直接インストールすることができます：
+
+```bash
+# 基本インストール
+pip install -U "asreview @ git+https://github.com/youkiti/ASReview-Japanese@main"
+
+# 依存一式を入れたい場合は [all] の extras を付けて指定
+pip install -U "asreview[all] @ git+https://github.com/youkiti/ASReview-Japanese@main"
+
+# Google Colab などで ngrok も併せて使用する場合
+pip install -U pyngrok
+```
+
+### 日本語ドキュメント
+
+日本語に翻訳されたユーザーマニュアルは以下からご利用いただけます：
+
+- **[インストール手順](docs/source/lab/installation.rst)** - ASReview LAB のインストール方法
+- **[開始方法](docs/source/lab/start.rst)** - ASReview LAB の起動と基本設定
+- **[プロジェクト作成](docs/source/lab/project_create.rst)** - 新しいレビュープロジェクトの作成方法
+- **[スクリーニング](docs/source/lab/screening.rst)** - レコードのスクリーニング手順
+- **[データフォーマット](docs/source/lab/data_format.rst)** - サポートされているデータ形式
+- **[AIモデル](docs/source/lab/models.rst)** - 利用可能なAIモデルの説明
+- **[進捗監視](docs/source/lab/progress.rst)** - 進捗の確認と結果のエクスポート
+- **[トラブルシューティング](docs/source/lab/troubleshooting.rst)** - よくある問題と解決方法
+
 ---
 
 ## ASReview LAB: Active Learning for Systematic Reviews

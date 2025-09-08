@@ -1,35 +1,32 @@
-Progress and results
-====================
+進捗と結果
+==============
 
-During screening, you might want to keep track of your progress and to obtain
-information for your stopping criteria. This section provides documentation on
-useful tools for these purposes.
+スクリーニング中に、進捗を追跡し、停止基準の情報を得たい場合があります。このセクションでは、
+これらの目的に役立つツールに関するドキュメントを提供します。
 
-Dashboard
----------
+ダッシュボード
+-----------
 
-ASReview LAB offers insightful statistics and charts to help you monitor your
-progress.
+ASReview LAB は進捗を監視するのに役立つ洞察に富んだ統計とチャートを提供しています。
 
-To open the dashboard:
+ダッシュボードを開くには：
 
-1. :doc:`start`.
-2. Click on *Dashboard* in the left menu.
+1. :doc:`start`。
+2. 左のメニューで *ダッシュボード* をクリック。
 
-For all of the statistics and charts, you can find information on how they work
-by clicking on the lamp icon in the top right corner of a statistic or chart.
-Feel free to ask questions about the statistics and charts on the Discussion
-platform https://github.com/asreview/asreview/discussions.
+すべての統計とチャートについて、統計またはチャートの右上隅にあるランプアイコンを
+クリックすることで、どのように動作するかの情報を確認できます。統計やチャートに関する
+質問がある場合は、ディスカッションプラットフォーム https://github.com/asreview/asreview/discussions でお気軽にお尋ねください。
 
 
 .. figure:: ../../images/fullscreen_projects.png
    :alt: ASReview LAB progress Dashboard
 
-   The Dashboard of a review that almost hit the stopping criteria.
+   停止基準にもう少しで到達しそうなレビューのダッシュボード。
 
 
-Stop screening
---------------
+スクリーニングの停止
+-----------------
 
 On the dashboard, you can set a stopping criteria for your screening. The
 stopping criterium is a threshold for the number of *not relevant* records since
@@ -56,8 +53,8 @@ are discussed.
   stop. The wave plot displays the threshold you set.
 
 
-Mark project as finished
-------------------------
+プロジェクトを完了としてマーク
+-----------------------------
 
 When you decide to stop screening, you can mark the project as finished. You can
 undo this at any time. To mark your project as finished:
@@ -77,21 +74,21 @@ Continuing screening is now disabled. This can be undone by clicking again on
   after marking the project as finished.
 
 
-Export dataset
---------------
+データセットのエクスポート
+------------------------------
 
-At any moment during the screening process, you can export your dataset. This
-includes the labels you provided, the data you imported, and some additional
-variables. You can export your dataset to a RIS, CSV, TSV, or Excel file.
+スクリーニングプロセスの途中いつでもデータセットをエクスポートできます。これにはあなたが
+提供したラベル、インポートしたデータ、およびいくつかの追加変数が含まれます。
+RIS、CSV、TSV、またはExcelファイルとしてデータセットをエクスポートできます。
 
-To download your dataset follow these steps:
+データセットをダウンロードするには、以下の手順に従ってください：
 
-1. :doc:`start`.
-2. Open a project.
-3. Click on *Collection* in the menu on the left.
-4. Click on the *Export* button in the top right corner of the screen.
-5. Select the records you want to export.
-6. Click on *Export*.
+1. :doc:`start`。
+2. プロジェクトを開く。
+3. 左のメニューで *コレクション* をクリック。
+4. 画面右上隅の *エクスポート* ボタンをクリック。
+5. エクスポートしたいレコードを選択。
+6. *エクスポート* をクリック。
 
 .. note::
 

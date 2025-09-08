@@ -1,27 +1,27 @@
-Start ASReview LAB
+ASReview LAB の開始
 ==================
 
-After you install ASReview LAB, start the program via the command line to start
-using it.
+ASReview LAB をインストールした後、コマンドラインからプログラムを開始して
+使用を開始してください。
 
 .. code:: bash
 
 	asreview lab
 
-When you are using Windows, open `CMD.exe` and run the command. When you use
-MacOS or Linux, you can open `Terminal` and run the command.
+Windows を使用している場合は `CMD.exe` を開いてコマンドを実行してください。MacOS や Linux を
+使用している場合は `Terminal` を開いてコマンドを実行できます。
 
-Read the following sections for advanced options to start or configure ASReview
-LAB users.
+ASReview LAB を開始または設定するための高度なオプションについては、以下のセクションを
+お読みください。
 
-Command line arguments for starting ASReview LAB
+ASReview LAB 開始のためのコマンドライン引数
 ------------------------------------------------
 
-ASReview LAB provides a powerful command line interface for running ASReview LAB
-with other options or even run tasks like simulations. For a list of available
-commands in ASReview LAB, type :code:`asreview lab --help`.
+ASReview LAB は、他のオプションで ASReview LAB を実行したり、シミュレーションのようなタスクを
+実行するための強力なコマンドラインインターフェースを提供します。ASReview LAB で利用可能な
+コマンドのリストは、:code:`asreview lab --help` と入力してください。
 
-:program:`asreview lab` launches the ASReview LAB software (the frontend).
+:program:`asreview lab` は ASReview LAB ソフトウェア（フロントエンド）を起動します。
 
 .. code:: bash
 
@@ -33,106 +33,104 @@ commands in ASReview LAB, type :code:`asreview lab --help`.
 
 .. option:: -h, --help
 
-	Show help message and exit.
+	ヘルプメッセージを表示して終了します。
 
 .. option:: --host HOST
 
-    The host/IP address the server will listen on.
+    サーバーがリッスンするホスト/IPアドレスです。
 
 .. option:: --port PORT
 
-	The port the server will listen on.
+	サーバーがリッスンするポートです。
 
 .. option:: --enable-auth ENABLE_AUTH
 
-	Enable authentication. Deprecated.
+	認証を有効にします。非推奨。
 
 .. option:: --secret-key SECRET_KEY
 
-	Secret key for authentication. Deprecated.
+	認証用のシークレットキーです。非推奨。
 
 .. option:: --salt SALT
 
-	When using authentication, a salt code is needed for hasing passwords.
+	認証を使用する際、パスワードのハッシュ化にソルトコードが必要です。
 
 .. option:: --config-path CONFIG_PATH
 
-    Path to a TOML file containing ASReview parameters.
+    ASReview パラメータを含む TOML ファイルへのパスです。
 
 .. option:: --no-browser NO_BROWSER
 
-	Do not open ASReview LAB in a browser after startup.
+	起動後にブラウザで ASReview LAB を開かないようにします。
 
 .. option:: --port-retries NUMBER_RETRIES
 
-	The number of additional ports to try if the specified port is not
-        available.
+	指定したポートが使用できない場合に試す追加ポートの数です。
 
 .. option:: --certfile CERTFILE_FULL_PATH
 
-    The full path to an SSL/TLS certificate file.
+    SSL/TLS 証明書ファイルへのフルパスです。
 
 .. option:: --keyfile KEYFILE_FULL_PATH
 
-    The full path to a private key file for usage with SSL/TLS.
+    SSL/TLS で使用する秘密鍵ファイルへのフルパスです。
 
 .. option:: --skip-update-check
 
-	Skip checking for updates.
+	更新チェックをスキップします。
 
 
-Set environment variables
+環境変数の設定
 -------------------------
 
-The following environment variables are available.
+以下の環境変数が利用可能です。
 
 .. option:: ASREVIEW_PATH
 
-	The path to the folder with project. Default `~/.asreview`.
+	プロジェクトを含むフォルダへのパスです。デフォルトは `~/.asreview` です。
 
 
-How you set environment variables depends on the operating system and the
-environment in which you deploy ASReview LAB.
+環境変数の設定方法は、オペレーティングシステムと ASReview LAB をデプロイする
+環境によって異なります。
 
-In MacOS or Linux operating systems, you can set environment variables from the
-command line. For example:
+MacOS や Linux オペレーティングシステムでは、コマンドラインから環境変数を設定できます。
+例えば：
 
 .. code:: bash
 
     export ASREVIEW_PATH=~/.asreview
 
-On Windows, you can use the following syntax:
+Windows では、以下の構文を使用できます：
 
 .. code:: bash
 
 	set ASREVIEW_PATH=~/.asreview
 
-To check if you set an environment variable successfully, run the following on
-\*nix operating systems:
+環境変数が正常に設定されたかを確認するには、\*nix オペレーティングシステムでは
+以下を実行してください：
 
 .. code:: bash
 
 	echo $ASREVIEW_PATH
 
-Or the following on Windows operating systems:
+または Windows オペレーティングシステムでは以下を実行してください：
 
 .. code:: bash
 
 	echo %ASREVIEW_PATH%
 
 
-Run ASReview LAB on localhost with a different port
+異なるポートで localhost 上の ASReview LAB を実行
 ---------------------------------------------------
 
-By default, ASReview LAB runs on port 5000. If that port is already in use or if
-you want to specify a different port, start ASReview LAB with the following
-command:
+デフォルトでは、ASReview LAB はポート 5000 で実行されます。そのポートが既に使用中であるか、
+異なるポートを指定したい場合は、以下のコマンドで ASReview LAB を開始してください：
 
 .. code:: bash
 
 	asreview lab --port <port>
 
-For example, start ASReview LAB on port 5001:
+例えば、ASReview LAB をポート 5001 で開始する場合：
 
 .. code:: bash
 
@@ -140,36 +138,33 @@ For example, start ASReview LAB on port 5001:
 
 
 
-Local server with authentication
+認証付きローカルサーバー
 --------------------------------
 
-.. note:: For production use, it is recommended to use the Docker setup. See the
-   :doc:`../server/overview` section for more information.
+.. note:: 本番環境での使用には Docker セットアップの使用をお勧めします。詳細については
+   :doc:`../server/overview` セクションを参照してください。
 
-The most basic configuration of the ASReview LAB application with authentication
-is to run the application from the CLI with the ``--enable-auth`` flag. The
-application will start with authentication enabled and will create a SQLite
-database if it does not exist. The database will be stored in the ASReview
-projects folder. The database contains the user accounts and links them to
-projects.
+認証付き ASReview LAB アプリケーションの最も基本的な設定は、CLI から ``--enable-auth`` フラグを
+付けてアプリケーションを実行することです。アプリケーションは認証が有効な状態で開始され、
+存在しない場合は SQLite データベースを作成します。データベースは ASReview プロジェクト
+フォルダに保存されます。データベースにはユーザーアカウントが含まれ、プロジェクトにリンクされます。
 
-Start the application with authentication enabled:
+認証を有効にしてアプリケーションを開始します：
 
 .. code:: bash
 
     asreview lab --enable-auth --secret-key=<secret key> --salt=<salt>
 
-where ``--enable-auth`` forces the application to run in an authenticated mode,
-``<secret key>`` is a string that is used for encrypting cookies and ``<salt>``
-is a string that is used to hash passwords. The ``--secret-key`` and ``--salt``
-parameters are mandatory if authentication is required.
+ここで ``--enable-auth`` はアプリケーションを認証モードで実行することを強制し、
+``<secret key>`` はクッキーの暗号化に使用される文字列、``<salt>`` はパスワードのハッシュ化に
+使用される文字列です。認証が必要な場合、``--secret-key`` および ``--salt`` パラメータは必須です。
 
-To create user accounts, one can use the ``add-users`` command of the
-``auth-tool`` sub command of the ASReview application:
+ユーザーアカウントを作成するには、ASReview アプリケーションの ``auth-tool`` サブコマンドの
+``add-users`` コマンドを使用できます：
 
 .. code:: bash
 
     asreview auth-tool add-users
 
-For more information about auth-tool and creating users, see the section
-`Create user accounts <#create-user-accounts-with-auth-tool>`_ below.
+auth-tool とユーザー作成についての詳細は、以下の
+`ユーザーアカウントの作成 <#create-user-accounts-with-auth-tool>`_ セクションを参照してください。

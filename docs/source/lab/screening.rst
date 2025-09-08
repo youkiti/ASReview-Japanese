@@ -1,150 +1,137 @@
-Screening
-=========
+スクリーニング
+==========
 
-Once your project is set up, you can immediately begin screening records. To get
-started, click on *Reviewer* in the left menu if you are not already on the
-review page. ASReview LAB will present you with a title and abstract to evaluate
-and label.
+プロジェクトのセットアップが完了したら、すぐにレコードのスクリーニングを開始できます。
+開始するには、レビューページにいない場合は左のメニューで *Reviewer* をクリックして
+ください。ASReview LAB が評価とラベル付けのためのタイトルとアブストラクトを表示します。
 
-Your task is to decide whether the record is relevant or irrelevant. Simply
-click on your choice, and the next record will be presented to you. While you
-review, ASReview LAB works in the background, training a model based on your
-decisions and continuously improving its understanding of your preferences. This
-process updates the ranking of the remaining records, ensuring that the most
-relevant records are prioritized for review.
+あなたのタスクは、そのレコードが関連しているかどうかを判断することです。単純に選択肢を
+クリックするだけで、次のレコードが表示されます。あなたがレビューしている間、
+ASReview LAB は背後で動作し、あなたの判断に基づいてモデルを訓練し、あなたの
+好みへの理解を継続的に改善しています。このプロセスにより残りのレコードのランキングが
+更新され、最も関連性の高いレコードがレビューの優先順位に置かれます。
 
 
 .. figure:: ../../images/fullscreen_review.png
    :alt: Reviewer screen for ASReview LAB
 
-   The review screen of ASReview LAB with the title and abstract of a record to
-   review. Click on the relevant or irrelevant button to label the record and
-   continue to the next record. You can also add a note to the record or check
-   self-defined tags.
+   レビューすべきレコードのタイトルとアブストラクトが表示されたASReview LABのレビュー画面。
+   関連ありまたは関連なしボタンをクリックしてレコードにラベルを付け、
+   次のレコードに進みます。レコードにメモを追加したり、自分で定義したタグをチェックしたりすることもできます。
 
 
-Each labeling decision by the user starts the training of a new model, provided
-no model is being trained at that time. When this new model is trained, the
-unseen records' rank order is updated. Training and labeling occur
-asynchronously. With fast models, a new ranking will likely be available before
-the user finishes reading the text. With slower models, training continues until
-a new model is trained, and the user can continue screening the next record in
-line (2nd, 3rd, etc.).
+ユーザーの各ラベル付け決定は、その時点でモデルが訓練中でなければ、新しいモデルの
+訓練を開始します。この新しいモデルが訓練されると、未確認レコードのランク順が
+更新されます。訓練とラベル付けは非同期で行われます。高速モデルの場合、
+ユーザーがテキストを読み終わる前に新しいランキングが利用可能になる可能性があります。
+低速モデルの場合、新しいモデルが訓練されるまで訓練が継続し、ユーザーは
+次のレコード（第2位、3位など）を継続してスクリーニングできます。
 
-As you keep reviewing documents and providing labels, you will probably see
-fewer relevant records. When to stop screening is left to you. See
-:doc:`progress` for more information on progress monitoring and information on
-when to stop.
+文書のレビューとラベル付けを継続すると、関連するレコードが減ってくることでしょう。
+いつスクリーニングを停止するかはあなた次第です。進捗監視といつ停止すべきかの
+情報については :doc:`progress` を参照してください。
 
 .. tip::
 
-  If you are in doubt about your decision, take your time as you are the oracle.
-  Based on your input, a new model will be trained, and you do not want to
-  confuse the prediction model. For the model, it may be better to consult
-  others and read the full text (in the case of reviewing abstracts of
-  scientific papers).
+  判断に迷った場合は、あなたがオラクル（正解者）であることを忘れずに時間をかけてください。
+  あなたの入力に基づいて新しいモデルが訓練されるため、予測モデルを混乱させたくはありません。
+  モデルのためには、他の人に相談したり、（科学論文のアブストラクトをレビューしている場合は）
+  全文を読んだりする方が良い場合があります。
 
-Autosave
+自動保存
 --------
 
-Your decisions (and notes) are saved automatically into your ASReview project
-file. There is no need to press any buttons to save your work anywhere in
-ASReview LAB (in fact, there is not even a *save* button).
+あなたの判断（およびメモ）はASReviewプロジェクトファイルに自動的に保存されます。
+ASReview LAB のどこでも作業を保存するためにボタンを押す必要はありません
+（実際、*保存* ボタンすらありません）。
 
-Change decisions
-----------------
+判断の変更
+----------
 
-In some cases, you might want to change your previous decision. An overview of
-your decisions made during screening can be found on the **Collection** page.
-You can change decisions on this page.
+場合によっては、以前の判断を変更したいことがあります。スクリーニング中に行った
+判断の概要は **Collection** ページで確認できます。このページで判断を変更できます。
 
-1. :doc:`start`.
-2. Open or :doc:`project_create`.
-3. Click on **Collection** in the menu on the left.
-4. To change the label of a record, click on the three dots on the right of the
-   record.
-5. Click on *Change label to*.
+1. :doc:`start`。
+2. プロジェクトを開くか:doc:`project_create`。
+3. 左のメニューで **Collection** をクリック。
+4. レコードのラベルを変更するには、レコードの右側の3点リーダーをクリック。
+5. *ラベルを変更* をクリック。
 
-Full Text
----------
+全文
+----
 
-If Digital Object Identifiers (DOI) or URLs are available in the metadata of the
-records in your dataset, ASReview LAB will display the DOI and URL during
-screening. Most of the time, DOIs point to the full text of a publication. See
-:doc:`datasets <data>` for more information on including DOI and URL values in
-your datasets.
+データセットのレコードのメタデータにDigital Object Identifiers (DOI)やURLが含まれている場合、
+ASReview LAB はスクリーニング中にDOIやURLを表示します。ほとんどの場合、DOIは刊行物の全文を
+指します。データセットにDOIやURL値を含める方法の詳細は :doc:`datasets <data>` を参照してください。
 
-Keyboard shortcuts
-------------------
+キーボードショートカット
+-----------------------
 
-ASReview LAB supports the use of keyboard shortcuts during screening. The table
-below lists the available keyboard shortcuts.
+ASReview LAB はスクリーニング中のキーボードショートカットの使用をサポートしています。
+以下の表に利用可能なキーボードショートカットを示します。
 
-.. list-table:: Keyboard Shortcuts
+.. list-table:: キーボードショートカット
   :header-rows: 1
 
-  * - Action
-    - Shortcut
-  * - Label record as relevant
-    - **r** or **Shift + r**
-  * - Label record as irrelevant
-    - **i** or **Shift + i**
-  * - Add note to record
-    - **n** or **Shift + n**
+  * - アクション
+    - ショートカット
+  * - レコードを関連ありとしてラベル付け
+    - **r** または **Shift + r**
+  * - レコードを関連なしとしてラベル付け
+    - **i** または **Shift + i**
+  * - レコードにメモを追加
+    - **n** または **Shift + n**
 
-Show model information
-----------------------
+モデル情報の表示
+-----------------
 
-ASReview LAB allows you to view the model used to present you the record you
-currently see. This is especially useful if you are interested in the underlying
-model and how it works, or if you want to switch to a different model.
+ASReview LAB では、現在表示されているレコードの推薦に使用されたモデルを表示できます。
+これは特に、基盤となるモデルやその仕組みに興味がある場合、または別のモデルに
+切り替えたい場合に便利です。
 
-1. :doc:`start`.
-2. Click on *Settings* (bottom left).
-3. Click on *Show model information* to enable or disable the model view.
-4. Go back to the reviewer screen if you are not there yet.
+1. :doc:`start`。
+2. *設定* （左下）をクリック。
+3. *モデル情報を表示* をクリックしてモデルビューを有効または無効にする。
+4. まだレビューアー画面にいない場合は、レビューアー画面に戻る。
 
 .. note::
 
-  The model information is only available when the record presented to you is
-  the recommendation of a model. If you haven't trained a model yet, you will
-  not see that the record is presented to you at random.
+  モデル情報は、表示されているレコードがモデルの推薦である場合にのみ利用できます。
+  まだモデルを訓練していない場合は、レコードがランダムに表示されていることを
+  確認できません。
 
 .. warning::
 
-  Switching models during screening can be hard to understand for new users or
-  non-technical users. As the model is trained in the background after each
-  decision, records might be presented with the "old" model for a while. Once
-  the new model is trained, a record is presented to you based on the new model.
-  This can be confusing for new users.
+  スクリーニング中のモデル切り替えは、初心者や非技術系ユーザーにとって理解が困難な場合があります。
+  各判断後にモデルが背後で訓練されるため、しばらくの間は「古い」モデルでレコードが
+  表示される可能性があります。新しいモデルが訓練されると、新しいモデルに基づいてレコードが
+  表示されます。これは初心者にとって混乱を招く可能性があります。
 
-Dark mode
----------
+ダークモード
+-----------
 
-ASReview LAB offers the option to customize the screening appearance and
-functionality.
+ASReview LAB はスクリーニングの外観と機能をカスタマイズするオプションを提供しています。
 
-1. :doc:`start`.
-2. Click on *Settings* (bottom left).
-3. Click on Dark mode to enable or disable dark mode. You can also use the
-   system preference.
+1. :doc:`start`。
+2. *設定* （左下）をクリック。
+3. ダークモードをクリックしてダークモードを有効または無効にする。システムの設定も
+   使用できます。
 
 .. note::
-  Your preference is saved in the browser.
+  あなたの設定はブラウザーに保存されます。
 
-Font size
----------
+フォントサイズ
+-----------
 
-ASReview LAB allows you to adjust the font size of the text displayed during
-screening.
+ASReview LAB ではスクリーニング中に表示されるテキストのフォントサイズを調整できます。
 
-1. :doc:`start`.
-2. Click on *Settings* (bottom left).
-3. Click on *Font size*.
-4. Slide the slider to the desired font size.
+1. :doc:`start`。
+2. *設定* （左下）をクリック。
+3. *フォントサイズ* をクリック。
+4. スライダーを動かして希望のフォントサイズに調整。
 
-ELAS Game
----------
+ELASゲーム
+----------
 
-If you want a break from screening, click on the ELAS mascot on the top right in
-the reviewer screen `;)`. Let us know about your high score!
+スクリーニングから休憩したい場合は、レビューアー画面の右上にELASマスコットをクリックしてください`;)`。
+あなたのハイスコアを教えてください！

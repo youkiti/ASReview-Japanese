@@ -1,83 +1,76 @@
-AI Models
-=========
+AIモデル
+==========
 
-AI models in ASReview LAB are the driving force behind efficient and accurate
-systematic reviews. By learning from your decisions, these models prioritize the
-most relevant records, significantly reducing the time and effort required for
-your review process. Whether you're working with single-language datasets,
-multilingual data, or need advanced semantic understanding, ASReview offers a
-range of models tailored to your needs.
+ASReview LABのAIモデルは、効率的で正確な系統的レビューの原動力です。あなたの判断から学習することで、
+これらのモデルは最も関連性の高いレコードに優先順位を付け、レビュープロセスに必要な時間と努力を
+大幅に削減します。単一言語のデータセット、多言語データ、高度な意味理解が必要な場合に
+関わらず、ASReviewはあなたのニーズに合わせた様々なモデルを提供しています。
 
-Each model is built from a combination of components—feature extractors,
-classifiers, queriers, and balancers—that work together to optimize the review
-process. You can choose from pre-configured models for simplicity or customize
-your own for greater flexibility. This guide will help you understand the
-available models and how to select the best one for your use case.
+各モデルは、レビュープロセスを最適化するために連携するコンポーネントの組み合わせから
+構築されています—特徴抽出器、分類器、クエリア、バランサー。シンプルさを求める場合は
+事前設定されたモデルから選択し、より大きな柔軟性が必要な場合は独自のモデルを
+カスタマイズできます。このガイドは、利用可能なモデルを理解し、あなたの使用事例に最適な
+モデルを選択する方法を学ぶのに役立ちます。
 
 .. tip::
 
-  Not sure where to start? The ELAS u4 model is a great choice for most users.
-  It's fast, efficient, and performs well across a variety of datasets. It's
-  available by default in ASReview LAB.
+  どこから始めればよいかわからない場合？ELAS u4モデルはほとんどのユーザーにとって優秀な選択です。
+  高速で効率的で、様々なデータセットで優秀な性能を発揮します。ASReview LABでデフォルトで
+  利用可能です。
 
-ELAS Models
+ELASモデル
 -----------
 
-The ELAS models in ASReview LAB are pre-configured AI models designed to cater
-to a variety of systematic review needs. Whether you need a fast and efficient
-model, one that handles multilingual datasets, or a model with advanced semantic
-understanding, the ELAS series has you covered. Each model is built from a
-combination of components—feature extractors, classifiers, queriers, and
-balancers—that work together to optimize the review process.
+ASReview LABのELASモデルは、様々な系統的レビューのニーズに対応するように設計された
+事前設定されたAIモデルです。高速で効率的なモデル、多言語データセットを扱うモデル、
+または高度な意味理解を持つモデルが必要な場合でも、ELASシリーズが対応します。
+各モデルは、レビュープロセスを最適化するために連携するコンポーネントの組み合わせから
+構築されています—特徴抽出器、分類器、クエリア、バランサー。
 
-All ELAS models are active learning models. This means they iteratively learn
-from your labeling decisions and dynamically adjust their predictions to
-prioritize the most relevant records. Active learning ensures that the review
-process becomes more efficient over time, focusing on the records that are most
-likely to be relevant.
+すべてのELASモデルはアクティブラーニングモデルです。これは、あなたのラベル付け決定から反復的に学習し、
+最も関連性の高いレコードに優先順位を付けるために予測を動的に調整することを意味します。
+アクティブラーニングにより、レビュープロセスは時間とともにより効率的になり、最も関連性が高い
+可能性のあるレコードに焼点を合わせることができます。
 
-.. list-table:: Model Overview
+.. list-table:: モデル概要
    :header-rows: 1
 
-   * - Model
-     - Short name
-     - Description
-     - Requires
+   * - モデル
+     - 略名
+     - 説明
+     - 必要項目
    * - ELAS Ultra
-     - u-series
-     - Rapid and excellent-performing model for most use cases.
+     - uシリーズ
+     - ほとんどの使用事例に適した高速で優秀な性能のモデル。
      - -
    * - ELAS Multilingual
-     - l-series
-     - Designed for multilingual datasets.
-     - :doc:`dory`, :ref:`Hardware Requirements <lab/models:Hardware Requirements>`
+     - lシリーズ
+     - 多言語データセット用に設計。
+     - :doc:`dory`, :ref:`ハードウェア要件 <lab/models:Hardware Requirements>`
    * - ELAS Heavy
-     - h-series
-     - Focuses on semantic understanding of text.
-     - :doc:`dory`, :ref:`Hardware Requirements <lab/models:Hardware Requirements>`
+     - hシリーズ
+     - テキストの意味理解に焦点を当てたモデル。
+     - :doc:`dory`, :ref:`ハードウェア要件 <lab/models:Hardware Requirements>`
 
-For most users, the pre-configured ELAS models are sufficient. However, if you
-want more control, you can create custom models by mixing and matching
-components. This flexibility allows you to tailor the AI model to your specific
-dataset and research goals. Custom models can combine components from both
-ASReview and the :doc:`dory` extension, offering advanced options for those with
-more technical expertise.
+ほとんどのユーザーにとって、事前設定されたELASモデルで十分です。ただし、より細かい制御が必要な場合は、
+コンポーネントを組み合わせてカスタムモデルを作成できます。この柔軟性により、特定のデータセットと
+研究目標に合わせてAIモデルを調整できます。カスタムモデルはASReviewと:doc:`dory`拡張機能の
+両方からコンポーネントを組み合わせることができ、技術的な専門知識を持つ人に高度な
+オプションを提供します。
 
 ELAS Ultra
 ~~~~~~~~~~
 
-The ELAS Ultra AI model in ASReview LAB is the default and most widely used
-model. It is designed for speed and efficiency, making it ideal for most
-systematic review tasks. The model leverages "classic" machine learning
-techniques, which are lightweight and reliable. These techniques are implemented
-using components from the SciKit-learn library, ensuring robust performance.
+ASReview LABのELAS Ultra AIモデルはデフォルトで最も幅広く使用されているモデルです。
+高速性と効率性を目的として設計されており、ほとんどの系統的レビュータスクに理想的です。
+このモデルは軽量で信頼性の高い「古典的」な機械学習手法を活用しています。これらの手法は
+SciKit-learnライブラリのコンポーネントを使用して実装され、堅牢な性能を保証しています。
 
-Key features of ELAS Ultra:
+ELAS Ultraの主な特徴：
 
-- **Speed**: Processes data quickly, making it suitable for large datasets.
-- **Efficiency**: Balances performance and resource usage, ensuring smooth
-  operation on most systems.
-- **Versatility**: Performs well across a wide range of datasets and use cases.
+- **速度**: データを高速で処理し、大きなデータセットに適しています。
+- **効率性**: 性能とリソース使用量のバランスが良く、ほとんどのシステムでスムーズな動作を保証します。
+- **汎用性**: 幅広いデータセットと使用事例で優秀な性能を発揮します。
 
 The following table outlines the components of the ELAS Ultra model for its
 various versions:
@@ -258,8 +251,8 @@ Tips for customization:
   Start with simpler combinations and gradually explore more complex setups as
   you gain experience.
 
-Hardware Requirements
----------------------
+ハードウェア要件
+-----------------
 
 The hardware requirements for running AI models in ASReview LAB vary depending
 on the complexity of the model. The ELAS Ultra models are lightweight and can
@@ -278,8 +271,8 @@ systems will also benefit from a modern GPU for faster processing. Running these
 models on underpowered hardware may result in slower performance, longer
 training times, and inefficient screening.
 
-Model Numbering
----------------
+モデル番号付け
+--------------
 
 The ELAS models are numbered with a letter and a number. The letter indicates
 the type of model, and the number indicates the version. The latest version of
@@ -288,20 +281,19 @@ latest version of the Ultra model is denoted as ELAS uX, where X represents the
 highest available version number. Not all historical versions are available in
 ASReview LAB, but you can always use the latest version of the model.
 
-Changing Models
----------------
+モデルの変更
+--------------
 
-You can change the AI model used in your systematic review at any time. When you
-switch models, the new model will start training in the background. This process
-might take some time, depending on the size of your dataset and the complexity
-of the model. However, you can continue screening records without interruption
-while the new model is being trained.
+系統的レビューで使用するAIモデルはいつでも変更できます。モデルを切り替えると、新しいモデルが
+背後で訓練を開始します。このプロセスはデータセットのサイズとモデルの複雑さによって、
+ある程度の時間がかかる場合があります。ただし、新しいモデルの訓練中でも中断することなく
+レコードのスクリーニングを継続できます。
 
-To change the model, follow these steps:
+モデルを変更するには、以下の手順に従ってください：
 
-1. Go to the **Customize** section in ASReview LAB.
-2. Navigate to the **AI** card.
-3. Select the desired model from the list of available options.
+1. ASReview LABの **カスタマイズ** セクションに移動。
+2. **AI** カードに移動。
+3. 利用可能なオプションの一覧から希望のモデルを選択。
 
 Once the new model is trained, it will automatically take over and start
 prioritizing records based on its predictions. In the meantime, you can keep

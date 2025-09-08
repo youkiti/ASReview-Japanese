@@ -1,41 +1,39 @@
-Start a review
+レビューの開始
 ==============
 
-To start reviewing a dataset with ASReview LAB, you create a project containing
-a dataset with records to screen. The project will contain your dataset,
-settings, labeling decisions, and machine learning models.
+ASReview LAB でデータセットのレビューを開始するには、スクリーニングするレコードを含むデータセットを
+含むプロジェクトを作成します。プロジェクトにはデータセット、設定、ラベル付け決定、
+および機械学習モデルが含まれます。
 
-To start a review project, you need to:
+レビュープロジェクトを開始するには、以下が必要です：
 
-1. :doc:`start`.
-2. Go to the *Reviews* if you are not already there
+1. :doc:`start`。
+2. まだそこにいない場合は *レビュー* に移動。
    (http://localhost:5000/reviews)
-3. Upload, select, or choose a dataset to screen.
-4. Verify the dataset with the charts. Ensure that the dataset completeness
-   is sufficient.
+3. スクリーニングするデータセットをアップロード、選択、または選ぶ。
+4. チャートでデータセットを検証。データセットの完全性が十分であることを確認。
 
-Add Dataset
------------
+データセットの追加
+-----------------
 
-The first step in creating a project is to select a dataset. You can upload a
-dataset from your computer, select a dataset from Discovery, or use a dataset
-from a URL or DOI. When uploading a dataset from your computer, URL, or DOI,
-ensure that the dataset is in a supported format. See :doc:`data` for extensive
-information about the supported formats and metadata.
+プロジェクト作成の最初のステップはデータセットの選択です。コンピューターからデータセットを
+アップロードしたり、Discoveryからデータセットを選択したり、URLまたはDOIからデータセットを
+使用したりできます。コンピューター、URL、またはDOIからデータセットをアップロードする際は、
+データセットがサポートされているフォーマットであることを確認してください。サポートされている
+フォーマットとメタデータの詳細情報については :doc:`data` を参照してください。
 
 .. tip::
 
-    You will benefit most from what active learning has to offer with
-    :ref:`lab/data:High-quality data`.
+    :ref:`lab/data:High-quality data` でアクティブラーニングが提供するものから最大の利益を得られます。
 
-From File
-~~~~~~~~~
+ファイルから
+~~~~~~~~~~
 
-Drag and drop your file or select your file.
+ファイルをドラッグアンドドロップするか、ファイルを選択してください。
 
 
-From URL (or DOI)
-~~~~~~~~~~~~~~~~~
+URL（またはDOI）から
+~~~~~~~~~~~~~~~~~~
 
 Provide a URL or a DOI to a dataset. Many data repositories are supported via
 `Datahugger <https://github.com/J535D165/datahugger>`__. If the DOI points to
@@ -44,7 +42,7 @@ multiple files, you can select the specific file you want to use (e.g.,
 
 Click on *Download* to download and add the dataset to the project.
 
-From Discovery
+Discoveryから
 ~~~~~~~~~~~~~~
 
 Under Discovery, you can select existing datasets from the `SYNERGY dataset
@@ -53,8 +51,8 @@ extensions. The SYNERGY dataset is a collection of fully labeled datasets that
 can be used, but not exclusively, to benchmark the performance of active
 learning models.
 
-More options
-------------
+その他のオプション
+-------------------
 
 Under the dataset card, you find *Show options*. Clicking on *show options* will
 open extra options for the review.
@@ -64,7 +62,7 @@ open extra options for the review.
    :alt: ASReview LAB warmup
 
 
-Add Tags
+タグの追加
 ~~~~~~~~
 
 You can add tags to your records to review. Tags are useful for organizing your
@@ -77,7 +75,7 @@ Tags are presented to you in the *Reviewer* interface. Tags are presented as
 checkboxes, and you can select multiple tags for a record. You can find the
 selected tags in the collection and during the export of the dataset.
 
-Change AI Model
+AIモデルの変更
 ~~~~~~~~~~~~~~~
 
 By default, ASReview LAB uses the ELAS ultra model. This is a fast and efficient
@@ -98,8 +96,8 @@ For more information about the models and the required :doc:`dory` extension,
 see the :ref:`lab/models` page.
 
 
-Prior Knowledge
-~~~~~~~~~~~~~~~
+事前知識
+~~~~~~~~
 
 Prior knowledge refers to records in your dataset that you already know are
 relevant or irrelevant. Providing prior knowledge helps train the model during
@@ -127,9 +125,9 @@ Providing accurate prior knowledge improves the model's performance and can
 accelerate the review process.
 
 
-Screen
+スクリーン
 ------
 
-Once you have selected a dataset and optionally added tags, changed the model,
-or searched for prior knowledge, you can click on *Screen* to start the review. For
-more tips on how to screen records, see :doc:`screening`.
+データセットを選択し、オプションでタグを追加し、モデルを変更し、または事前知識を検索した後、
+*スクリーン* をクリックしてレビューを開始できます。レコードのスクリーニング方法のコツについては、
+:doc:`screening` を参照してください。
