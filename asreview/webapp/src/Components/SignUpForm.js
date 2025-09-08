@@ -29,13 +29,13 @@ import { InlineErrorHandler } from ".";
 
 // VALIDATION SCHEMA
 const SignupSchema = Yup.object().shape({
-  email: Yup.string().email("Invalid email").required("Email is required"),
-  name: Yup.string().required("Full name is required"),
+  email: Yup.string().email("無効なメールアドレスです").required("メールアドレスは必須です"),
+  name: Yup.string().required("氏名は必須です"),
   affiliation: Yup.string(),
-  password: passwordValidation(Yup.string()).required("Password is required"),
+  password: passwordValidation(Yup.string()).required("パスワードは必須です"),
   confirmPassword: Yup.string()
-    .required("Password confirmation is required")
-    .oneOf([Yup.ref("password"), null], "Passwords must match"),
+    .required("パスワードの確認は必須です")
+    .oneOf([Yup.ref("password"), null], "パスワードが一致しません"),
 });
 
 const SignUpForm = () => {
@@ -90,7 +90,7 @@ const SignUpForm = () => {
 
   return (
     <>
-      <CardHeader title="Create your profile" />
+      <CardHeader title="プロフィール作成" />
       <CardContent>
         <Stack spacing={2.5}>
           <Stack spacing={2.5} component="form" noValidate>
@@ -98,7 +98,7 @@ const SignUpForm = () => {
               required={true}
               id="email"
               name="email"
-              label="Email"
+              label="メールアドレス"
               type="email"
               autoComplete="off"
               fullWidth
@@ -111,7 +111,7 @@ const SignUpForm = () => {
             ) : null}
 
             <FormControl variant="outlined">
-              <InputLabel htmlFor="password">Password</InputLabel>
+              <InputLabel htmlFor="password">パスワード</InputLabel>
               <OutlinedInput
                 id="password"
                 type={showPassword ? "text" : "password"}
@@ -120,8 +120,8 @@ const SignUpForm = () => {
                     <IconButton
                       aria-label={
                         showPassword
-                          ? "hide the password"
-                          : "display the password"
+                          ? "パスワードを隠す"
+                          : "パスワードを表示"
                       }
                       onClick={toggleShowPassword}
                       onMouseDown={(event) => event.preventDefault()}
@@ -132,7 +132,7 @@ const SignUpForm = () => {
                     </IconButton>
                   </InputAdornment>
                 }
-                label="Password"
+                label="パスワード"
                 autoComplete="new-password"
                 value={formik.values.password}
                 onChange={formik.handleChange}
@@ -142,7 +142,7 @@ const SignUpForm = () => {
 
             <FormControl variant="outlined">
               <InputLabel htmlFor="confirmPassword">
-                Confirm Password
+                パスワード確認
               </InputLabel>
               <OutlinedInput
                 id="confirmPassword"
@@ -152,8 +152,8 @@ const SignUpForm = () => {
                     <IconButton
                       aria-label={
                         showPassword
-                          ? "hide the password"
-                          : "display the password"
+                          ? "パスワードを隠す"
+                          : "パスワードを表示"
                       }
                       onClick={toggleShowPassword}
                       onMouseDown={(event) => event.preventDefault()}
@@ -164,7 +164,7 @@ const SignUpForm = () => {
                     </IconButton>
                   </InputAdornment>
                 }
-                label="Confirm Password"
+                label="パスワード確認"
                 autoComplete="new-password"
                 value={formik.values.confirmPassword}
                 onChange={formik.handleChange}
@@ -211,7 +211,7 @@ const SignUpForm = () => {
               required={true}
               id="name"
               name="name"
-              label="Full name"
+              label="氏名"
               autoComplete="name"
               fullWidth
               value={formik.values.name}
@@ -223,7 +223,7 @@ const SignUpForm = () => {
             ) : null}
             <TextField
               id="affiliation"
-              label="Affiliation"
+              label="所属"
               name="affiliation"
               autoComplete="organization"
               fullWidth
@@ -245,14 +245,14 @@ const SignUpForm = () => {
           onClick={handleSubmit}
           disabled={!(formik.isValid && formik.dirty) || isLoading}
         >
-          Create
+          作成
         </Button>
         <Button
           id="sign-in"
           onClick={() => navigate("/signin")}
           sx={{ textTransform: "none" }}
         >
-          Sign In instead
+          サインインに戻る
         </Button>
       </CardActions>
     </>

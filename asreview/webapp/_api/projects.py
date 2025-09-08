@@ -143,7 +143,7 @@ def _run_model(project):
             # send
             client_socket.sendall(json.dumps(payload).encode("utf-8"))
         except socket.error:
-            raise RuntimeError("Queue manager is not alive.")
+            raise RuntimeError("キューマネージャーが動作していません。")
         finally:
             client_socket.close()
 
@@ -157,14 +157,14 @@ def _run_model(project):
 # error handlers
 @bp.errorhandler(ValueError)
 def value_error(e):
-    message = str(e) if str(e) else "Incorrect value."
+    message = str(e) if str(e) else "無効な値です。"
     logging.exception(e)
     return jsonify(message=message), 400
 
 
 @bp.errorhandler(ProjectNotFoundError)
 def project_not_found(e):
-    message = str(e) if str(e) else "Project not found."
+    message = str(e) if str(e) else "プロジェクトが見つかりません。"
     logging.exception(message)
     return jsonify(message=message), 404
 
@@ -259,7 +259,7 @@ def api_create_project():  # noqa: F401
                 file_writer=request.files["file"].save,
             )
         else:
-            return jsonify(message="No file or dataset found to import."), 400
+            return jsonify(message="インポートするファイルまたはデータセットが見つかりません。"), 400
 
         project.add_review()
 
@@ -414,7 +414,7 @@ def api_demo_data_project():  # noqa: F401
 
         except Exception as err:
             logging.exception(err)
-            return jsonify(message="Failed to load plugin datasets."), 500
+            return jsonify(message="プラグインデータセットの読み込みに失敗しました。"), 500
 
     elif subset == "benchmark":
         try:
@@ -423,7 +423,7 @@ def api_demo_data_project():  # noqa: F401
 
         except Exception as err:
             logging.exception(err)
-            return jsonify(message="Failed to load benchmark datasets."), 500
+            return jsonify(message="ベンチマークデータセットの読み込みに失敗しました。"), 500
 
     else:
         return jsonify(message="demo-data-loading-failed"), 400
@@ -898,7 +898,7 @@ def api_import_project():
 
     # raise error if file not given
     if "file" not in request.files:
-        return jsonify(message="No ASReview file found to import."), 400
+        return jsonify(message="インポートするASReviewファイルが見つかりません。"), 400
 
     with zipfile.ZipFile(request.files["file"], "r") as zip_obj:
         try:
@@ -920,7 +920,7 @@ def api_import_project():
         )
     except Exception as err:
         logging.exception(err)
-        raise ValueError("Failed to import project.") from err
+        raise ValueError("プロジェクトのインポートに失敗しました。") from err
 
     fp_al_cycle = Path(
         project.project_path,

@@ -140,11 +140,11 @@ const ReviewPage = () => {
             <Stack spacing={3} sx={{ alignItems: "center" }}>
               <img
                 src={ElasFinished}
-                alt="Celebration for reviewing all records"
+                alt="全てのレコードのレビューが完了したお祝い"
                 width="400"
               />
               <Typography variant="h5">
-                Wow! You have reviewed all the records.
+                素晴らしい！全てのレコードのレビューが完了しました。
               </Typography>
             </Stack>
           )}
@@ -157,15 +157,15 @@ const ReviewPage = () => {
             <Stack spacing={1} sx={{ alignItems: "center" }}>
               <img
                 src={ElasFinished}
-                alt="Celebration for finished project"
+                alt="プロジェクト完了のお祝い"
                 width="400"
               />
               <Typography variant="h5">
-                Congratulations! You have finished this project.
+                おめでとうございます！このプロジェクトが完了しました。
               </Typography>
               <Typography>
-                You have stopped reviewing and marked this project as finished.
-                You can change this on the project dashboard.
+                レビューを終了し、このプロジェクトを完了としてマークしました。
+                プロジェクトダッシュボードで変更できます。
               </Typography>
             </Stack>
           )}
@@ -175,7 +175,7 @@ const ReviewPage = () => {
       {isError && (
         <Alert severity="error" sx={{ mt: 3 }}>
           <Typography variant="h6" gutterBottom>
-            ASReview LAB failed to load a new record
+            ASReview LABで新しいレコードの読み込みに失敗しました
           </Typography>
           {error?.message && (
             <Typography variant="body1" gutterBottom>
@@ -183,7 +183,7 @@ const ReviewPage = () => {
             </Typography>
           )}
           <Button variant="contained" onClick={() => refetch()} sx={{ mt: 2 }}>
-            Try to load again
+            再読み込みを試行
           </Button>
         </Alert>
       )}

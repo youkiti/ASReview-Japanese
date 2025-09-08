@@ -21,6 +21,16 @@
 </p>
 </br>
 
+# ASReview LAB 日本語版 (Japanese Fork)
+
+> **注意**: これは ASReview LAB の非公式日本語フォークです。
+> 
+> このリポジトリは、2025年9月8日にClaude Code を使用してフォークされ、ユーザーインターフェースを日本語に完全に翻訳したものです。オリジナルのASReview LABの全ての機能を維持しながら、日本のユーザーがより使いやすいように日本語化されています。
+>
+> **オリジナル版**: [asreview/asreview](https://github.com/asreview/asreview)
+
+---
+
 ## ASReview LAB: Active Learning for Systematic Reviews
 
 **ASReview LAB** is an open-source machine learning tool for efficient,

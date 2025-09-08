@@ -71,10 +71,10 @@ def signin():
 
     if not user:
         # user does not exsist
-        result = (404, {"message": f"User account {email} does not exist."})
+        result = (404, {"message": f"ユーザーアカウント {email} は存在しません。"})
     elif not user.confirmed:
         # account is not confirmed
-        result = (404, {"message": f"User account {email} is not confirmed."})
+        result = (404, {"message": f"ユーザーアカウント {email} は確認されていません。"})
     else:
         # user exists and is confirmed: verify password
         if user.verify_password(password):
@@ -83,18 +83,18 @@ def signin():
             else:
                 result = (
                     401,
-                    {"message": "Unable to login user with verified password."},
+                    {"message": "パスワードが確認されたユーザーのログインができませんでした。"},
                 )
         else:
             # password is wrong
             if user.origin == "asreview":
                 # if this is an asreview user
-                result = (404, {"message": f"Incorrect password for user {email}."})
+                result = (404, {"message": f"ユーザー {email} のパスワードが間違っています。"})
             else:
                 # this must be an OAuth user trying to get in with
                 # a password
                 service = user.origin.capitalize()
-                result = (404, {"message": f"Please login with the {service} service."})
+                result = (404, {"message": f"{service}サービスでログインしてください。"})
 
     status, message = result
     response = jsonify(message)
@@ -247,7 +247,7 @@ def get_profile():
             },
         )
     else:
-        result = (404, "No user found.")
+        result = (404, "ユーザーが見つかりませんでした。")
 
     status, message = result
     response = jsonify({"message": message})
@@ -373,7 +373,7 @@ def update_profile():
                     {"message": message, "email_changed": True, "user_id": user.id},
                 )
             else:
-                result = (200, "User profile updated.")
+                result = (200, "ユーザープロフィールが更新されました。")
         except ValueError as e:
             DB.session.rollback()
             result = (400, f"Unable to update your profile! Reason: {str(e)}")
@@ -510,7 +510,7 @@ def delete_account():
                     jsonify(
                         {
                             "message": "Cannot delete the only admin account. "
-                            "Please create another admin account first."
+                            "先に別の管理者アカウントを作成してください。"
                         }
                     ),
                     400,
@@ -522,7 +522,7 @@ def delete_account():
                 jsonify(
                     {
                         "message": "You still own projects. "
-                        "Please let an admin transfer ownership or delete them before deleting your account."
+                        "アカウントを削除する前に、管理者に所有権を譲渡してもらうか、プロジェクトを削除してもらってください。"
                     }
                 ),
                 400,

@@ -120,3 +120,56 @@ Models are registered via entry points in `pyproject.toml` and can be extended t
 - `/asreview/webapp/src/App.js`: React app entry point
 - `/asreview/models/`: Model implementations
 - `/pyproject.toml`: Package configuration and entry points
+
+## Japanese Localization Plan (ASReview-Japanese Fork)
+
+This fork focuses on complete UI Japanese localization while maintaining code integrity.
+
+### Localization Scope
+
+**Target for Japanese Translation:**
+- React UI components: Button labels, form fields, messages, headers
+- Backend API error messages visible to users
+- HTML metadata: page titles, descriptions
+- Help/FAQ content in help.json
+- Offline page instructions
+
+**NOT to be translated (Safety):**
+- Variable names, function names, API endpoints
+- Developer comments and logs
+- Configuration keys
+- Database schema names
+
+### Implementation Phases
+
+#### Phase 1: Direct Japanese Hardcoding
+- No i18n library needed - direct string replacement approach
+- Replace English hardcoded strings with Japanese equivalents
+- Maintain code structure and variable names unchanged
+
+#### Phase 2: Frontend Components (Priority Order)
+1. **Authentication**: SignInForm, SignUpForm, AuthPage
+2. **Review Interface**: ReviewPage, RecordCard, StoppingDialog
+3. **Project Management**: ProjectsOverview, ProjectCard, DashboardHeader
+4. **Settings**: SettingsDialog, HelpPopover, ProfilePage
+5. **Admin Interface**: Overview, UsersComponent, TrainingQueue
+
+#### Phase 3: Backend Localization
+- Direct replacement of user-facing error messages in `_api/` modules
+- No Flask-Babel needed - simple string replacement
+- Maintain API response structure unchanged
+
+#### Phase 4: Metadata & Documentation
+- Replace HTML title/meta content with Japanese
+- Replace help.json content with Japanese
+- Update README with fork information
+- No language switcher needed - Japanese only
+
+### Development Notes
+
+- Direct hardcoded string replacement approach
+- No translation system needed - pure Japanese localization
+- Test all UI flows after string replacement
+- Keep API response structure unchanged
+- Preserve all variable names and technical terms in English
+- Replace only user-visible strings, not code identifiers

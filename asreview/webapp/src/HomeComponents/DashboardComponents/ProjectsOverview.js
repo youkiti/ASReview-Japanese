@@ -81,7 +81,7 @@ const ProjectsOverview = ({ mode }) => {
         )}
         {data?.upgrade_count > 0 && (
           <Alert severity="warning" sx={{ mb: 2 }}>
-            {`You have ${data?.upgrade_count} project(s) that need(s) to be upgraded. Please upgrade your projects to the latest version of ASReview.`}
+            {`アップグレードが必要なプロジェクトが${data?.upgrade_count}件あります。ASReviewの最新バージョンにアップグレードしてください。`}
             <Button
               variant="contained"
               onClick={upgradeProjects}
@@ -89,15 +89,15 @@ const ProjectsOverview = ({ mode }) => {
               color="inherit"
               loading={isUpgradingProjects}
             >
-              Upgrade projects
+              プロジェクトをアップグレード
             </Button>
           </Alert>
         )}
         {upgradeError && (
           <Alert severity="error" sx={{ mb: 2 }}>
             <Typography variant="h6">
-              There was an error while upgrading your projects. Please contact
-              the ASReview team via asreview@uu.nl.
+              プロジェクトのアップグレード中にエラーが発生しました。
+              asreview@uu.nlまでASReviewチームにお問い合わせください。
             </Typography>
             <Box sx={{ mt: 2 }} />
             <Typography variant="body1">{upgradeError.message}</Typography>
@@ -114,8 +114,8 @@ const ProjectsOverview = ({ mode }) => {
               >
                 <Typography variant="h5" sx={{ fontFamily: "Roboto Serif" }}>
                   {mode === projectModes.ORACLE
-                    ? "Current reviews"
-                    : "Running simulations"}
+                    ? "現在のレビュー"
+                    : "実行中のシミュレーション"}
                 </Typography>
               </Divider>
             )}
@@ -138,8 +138,8 @@ const ProjectsOverview = ({ mode }) => {
               >
                 <Typography variant="h5" sx={{ fontFamily: "Roboto Serif" }}>
                   {mode === projectModes.ORACLE
-                    ? "Finished reviews"
-                    : "Finished simulations"}
+                    ? "完了したレビュー"
+                    : "完了したシミュレーション"}
                 </Typography>
               </Divider>
             )}
@@ -157,8 +157,8 @@ const ProjectsOverview = ({ mode }) => {
               inReviewProjects?.length > 0 &&
               finishedProjects?.length === 0 && (
                 <Typography sx={{ textAlign: "center", fontStyle: "italic" }}>
-                  Done reviewing? Mark your project as finished to keep things
-                  organized!
+                  レビューは完了ですか？プロジェクトを完了とマークして
+                  整理しましょう！
                 </Typography>
               )}
           </>

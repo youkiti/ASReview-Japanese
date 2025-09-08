@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>ASReview LAB - Almost there!</title>
+    <title>ASReview LAB - もう少しです！</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style>
       body {
@@ -78,21 +78,21 @@
   </head>
   <body>
     <div class="container">
-      <h1>Almost there!</h1>
-      <p>You need one more step before you can start screening.</p>
+      <h1>もう少しです！</h1>
+      <p>スクリーニングを開始する前に、あと一つのステップが必要です。</p>
       <ol>
-        <li id="open-instruction">Open the terminal</li>
-        <li>Type <code>asreview lab --no-browser</code></li>
-        <li>Return to this page</li>
+        <li id="open-instruction">ターミナルを開く</li>
+        <li><code>asreview lab --no-browser</code>と入力</li>
+        <li>このページに戻る</li>
       </ol>
     </div>
     <script>
       // Detect platform and update instruction
       const instruction = document.getElementById("open-instruction");
       if (navigator.userAgent.includes("Windows")) {
-        instruction.textContent = "Open the Command Prompt";
+        instruction.textContent = "コマンドプロンプトを開く";
       } else {
-        instruction.textContent = "Open the terminal";
+        instruction.textContent = "ターミナルを開く";
       }
 
       // Refresh page on window focus

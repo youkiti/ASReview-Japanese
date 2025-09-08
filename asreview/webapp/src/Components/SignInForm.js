@@ -72,7 +72,7 @@ const SignInForm = () => {
     <>
       {!forgotPassword && (
         <>
-          <CardHeader title="Sign in" />
+          <CardHeader title="サインイン" />
 
           {!window.oAuthData && (
             <>
@@ -80,7 +80,7 @@ const SignInForm = () => {
                 <Stack spacing={3}>
                   <TextField
                     id="email"
-                    label="Email"
+                    label="メールアドレス"
                     name="email"
                     type="email"
                     value={email}
@@ -91,7 +91,7 @@ const SignInForm = () => {
                     autoComplete="email"
                   />
                   <FormControl sx={{ m: 1 }} variant="outlined">
-                    <InputLabel htmlFor="password">Password</InputLabel>
+                    <InputLabel htmlFor="password">パスワード</InputLabel>
                     <OutlinedInput
                       id="password"
                       type={showPassword ? "text" : "password"}
@@ -100,8 +100,8 @@ const SignInForm = () => {
                           <IconButton
                             aria-label={
                               showPassword
-                                ? "hide the password"
-                                : "display the password"
+                                ? "パスワードを隠す"
+                                : "パスワードを表示"
                             }
                             onClick={toggleShowPassword}
                             onMouseDown={(event) => {
@@ -116,7 +116,7 @@ const SignInForm = () => {
                           </IconButton>
                         </InputAdornment>
                       }
-                      label="Password"
+                      label="パスワード"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                     />
@@ -133,7 +133,7 @@ const SignInForm = () => {
                   color="primary"
                   onClick={handleSubmit}
                 >
-                  Sign in
+                  サインイン
                 </Button>
                 {window.allowAccountCreation && (
                   <Button
@@ -141,7 +141,7 @@ const SignInForm = () => {
                     onClick={() => navigate("/signup")}
                     sx={{ textTransform: "none" }}
                   >
-                    Create profile
+                    プロフィール作成
                   </Button>
                 )}
                 {window.emailVerification && (
@@ -150,7 +150,7 @@ const SignInForm = () => {
                     onClick={() => navigate("/forgot_password")}
                     sx={{ textTransform: "none" }}
                   >
-                    Forgot password
+                    パスワードを忘れた
                   </Button>
                 )}
               </CardActions>

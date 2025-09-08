@@ -2,26 +2,26 @@
   "version": "1",
   "resources": {
     "faq": {
-      "title": "Frequently asked questions",
+      "title": "よくある質問",
       "items": [
         {
-          "title": "How is Utrecht University linked to ASReview?",
+          "title": "ユトレヒト大学とASReviewの関係は？",
           "url": "https://www.uu.nl/en/research/ai-labs/disc-ai-lab"
         },
         {
-          "title": "How does active learning help with systematic reviews?",
+          "title": "アクティブラーニングはシステマティックレビューにどう役立つのか？",
           "url": "https://asreview.nl/blog/asreview-class-101/"
         },
         {
-          "title": "Has the use of ASReview been validated?",
+          "title": "ASReviewの使用は検証されていますか？",
           "url": "https://doi.org/10.1038/s42256-020-00287-7"
         },
         {
-          "title": "How to prepare your data?",
+          "title": "データの準備方法は？",
           "url": "https://asreview.readthedocs.io/en/stable/lab/data.html"
         },
         {
-          "title": "How to contribute to the open source ASReview project?",
+          "title": "オープンソースASReviewプロジェクトへの貢献方法は？",
           "url": "https://github.com/asreview/asreview/blob/main/CONTRIBUTING.md"
         }
       ]

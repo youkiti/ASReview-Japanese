@@ -38,25 +38,24 @@ const ForgotPassword = ({ showNotification }) => {
 
   return (
     <>
-      <CardHeader title="Forgot your password?" />
+      <CardHeader title="パスワードを忘れましたか？" />
       <CardContent>
         <Stack spacing={3}>
           <Stack spacing={2}>
             {window.emailVerification && (
               <p>
-                Enter your email address, click on the submit button and an
-                email will be sent to you. Check your spam or bulk folder if you
-                don't get an email.
+                メールアドレスを入力し、送信ボタンをクリックしてください。メールが送信されます。
+                メールが届かない場合は、迷惑メールフォルダを確認してください。
               </p>
             )}
             {!window.emailVerification && (
-              <p>Contact your ASReview-app administrator</p>
+              <p>ASReviewアプリの管理者にお問い合わせください</p>
             )}
           </Stack>
           {window.emailVerification && (
             <Stack spacing={3}>
               <TextField
-                label="Email"
+                label="メールアドレス"
                 value={email}
                 onChange={handleEmailChange}
                 variant="outlined"
@@ -77,14 +76,14 @@ const ForgotPassword = ({ showNotification }) => {
             color="primary"
             onClick={handleSubmit}
           >
-            Submit
+            送信
           </Button>
         )}
         <Button
           onClick={() => navigate("/signin")}
           sx={{ textTransform: "none" }}
         >
-          Sign In instead
+          サインインに戻る
         </Button>
       </CardActions>
     </>
