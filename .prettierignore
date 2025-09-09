@@ -1,0 +1,10 @@
+node_modules
+build
+*.py
+package-lock.json
+package.json
+jsconfig.json
+tests/asreview-project-file-archive
+asreview/webapp/src/Components/SignUpForm.js
+asreview/webapp/build
+asreview/webapp/node_modules
