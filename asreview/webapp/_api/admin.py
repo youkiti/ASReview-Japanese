@@ -68,7 +68,7 @@ def get_users():
 
         return jsonify({"users": user_list}), 200
     except SQLAlchemyError as e:
-        return jsonify({"message": f"Database error: {str(e)}"}), 500
+        return jsonify({"message": f"データベースエラー: {str(e)}"}), 500
 
 
 @bp.route("/users", methods=["POST"])
@@ -98,7 +98,7 @@ def create_user():
 
         if existing_user:
             return jsonify(
-                {"message": "User with this identifier or email already exists"}
+                {"message": "この識別子またはメールアドレスのユーザーは既に存在します"}
             ), 409
 
         # Create new user
@@ -119,7 +119,7 @@ def create_user():
 
         return jsonify(
             {
-                "message": "User created successfully",
+                "message": "ユーザーが正常に作成されました",
                 "user": {
                     "id": user.id,
                     "identifier": user.identifier,
@@ -132,13 +132,13 @@ def create_user():
 
     except ValueError as e:
         DB.session.rollback()
-        return jsonify({"message": f"Validation error: {str(e)}"}), 400
+        return jsonify({"message": f"検証エラー: {str(e)}"}), 400
     except IntegrityError as e:
         DB.session.rollback()
-        return jsonify({"message": f"User already exists: {str(e)}"}), 409
+        return jsonify({"message": f"ユーザーは既に存在します: {str(e)}"}), 409
     except SQLAlchemyError as e:
         DB.session.rollback()
-        return jsonify({"message": f"Database error: {str(e)}"}), 500
+        return jsonify({"message": f"データベースエラー: {str(e)}"}), 500
 
 
 @bp.route("/users/<int:user_id>", methods=["PUT"])
@@ -148,7 +148,7 @@ def update_user(user_id):
     try:
         user = DB.session.get(User, user_id)
         if not user:
-            return jsonify({"message": "User not found"}), 404
+            return jsonify({"message": "ユーザーが見つかりません"}), 404
 
         data = request.get_json()
 
@@ -175,14 +175,14 @@ def update_user(user_id):
                 user.hashed_password = User.create_password_hash(data["password"])
             else:
                 return jsonify(
-                    {"message": "Cannot set password for non-asreview users"}
+                    {"message": "asreview 以外のユーザーにはパスワードを設定できません"}
                 ), 400
 
         DB.session.commit()
 
         return jsonify(
             {
-                "message": "User updated successfully",
+                "message": "ユーザーが正常に更新されました",
                 "user": {
                     "id": user.id,
                     "identifier": user.identifier,
@@ -195,13 +195,13 @@ def update_user(user_id):
 
     except ValueError as e:
         DB.session.rollback()
-        return jsonify({"message": f"Validation error: {str(e)}"}), 400
+        return jsonify({"message": f"検証エラー: {str(e)}"}), 400
     except IntegrityError as e:
         DB.session.rollback()
-        return jsonify({"message": f"Integrity error: {str(e)}"}), 409
+        return jsonify({"message": f"整合性エラー: {str(e)}"}), 409
     except SQLAlchemyError as e:
         DB.session.rollback()
-        return jsonify({"message": f"Database error: {str(e)}"}), 500
+        return jsonify({"message": f"データベースエラー: {str(e)}"}), 500
 
 
 @bp.route("/users/<int:user_id>", methods=["DELETE"])
@@ -211,7 +211,7 @@ def delete_user(user_id):
     try:
         user = DB.session.get(User, user_id)
         if not user:
-            return jsonify({"message": "User not found"}), 404
+            return jsonify({"message": "ユーザーが見つかりません"}), 404
 
         # Store user info for response
         user_info = {
@@ -225,12 +225,12 @@ def delete_user(user_id):
         DB.session.commit()
 
         return jsonify(
-            {"message": "User deleted successfully", "deleted_user": user_info}
+            {"message": "ユーザーが正常に削除されました", "deleted_user": user_info}
         ), 200
 
     except SQLAlchemyError as e:
         DB.session.rollback()
-        return jsonify({"message": f"Database error: {str(e)}"}), 500
+        return jsonify({"message": f"データベースエラー: {str(e)}"}), 500
 
 
 @bp.route("/users/<int:user_id>", methods=["GET"])
@@ -240,7 +240,7 @@ def get_user(user_id):
     try:
         user = DB.session.get(User, user_id)
         if not user:
-            return jsonify({"message": "User not found"}), 404
+            return jsonify({"message": "ユーザーが見つかりません"}), 404
 
         user_data = {
             "id": user.id,
@@ -257,7 +257,7 @@ def get_user(user_id):
         return jsonify({"user": user_data}), 200
 
     except SQLAlchemyError as e:
-        return jsonify({"message": f"Database error: {str(e)}"}), 500
+        return jsonify({"message": f"データベースエラー: {str(e)}"}), 500
 
 
 @bp.route("/projects", methods=["GET"])
@@ -283,11 +283,11 @@ def get_all_projects():
                     "owner_id": db_project.owner_id,
                     "owner_name": (db_project.owner.name or db_project.owner.identifier)
                     if db_project.owner
-                    else "Unknown",
+                    else "不明",
                     "owner_email": db_project.owner.email
                     if db_project.owner
-                    else "Unknown",
-                    "name": "Unknown",  # Default value
+                    else "不明",
+                    "name": "不明",  # Default value
                     "created_at_unix": None,
                     "version": None,
                     "mode": None,
@@ -303,7 +303,7 @@ def get_all_projects():
                         # Update with data from project.json
                         project_data.update(
                             {
-                                "name": project_config.get("name", "Unnamed Project"),
+                                "name": project_config.get("name", "名称未設定"),
                                 "created_at_unix": project_config.get(
                                     "created_at_unix"
                                 ),
@@ -323,13 +323,15 @@ def get_all_projects():
 
                     except (json.JSONDecodeError, IOError) as e:
                         logging.warning(
-                            f"Could not read project.json for {db_project.project_id}: {e}"
+                            f"{db_project.project_id} の project.json を読み込めませんでした: {e}"
                         )
                         # Keep error status (already set), add error details
-                        project_data["error"] = "Could not read project configuration"
+                        project_data["error"] = (
+                            "プロジェクトの設定を読み込めませんでした"
+                        )
                 else:
                     # Keep error status (already set), add error details
-                    project_data["error"] = "Project configuration file not found"
+                    project_data["error"] = "プロジェクト設定ファイルが見つかりません"
 
                 project_list.append(project_data)
 
@@ -345,11 +347,11 @@ def get_all_projects():
                             db_project.owner.name or db_project.owner.identifier
                         )
                         if db_project.owner
-                        else "Unknown",
+                        else "不明",
                         "owner_email": db_project.owner.email
                         if db_project.owner
-                        else "Unknown",
-                        "name": "Error Loading Project",
+                        else "不明",
+                        "name": "プロジェクトの読み込みエラー",
                         "status": "error",
                         "error": str(e),
                     }
@@ -370,10 +372,12 @@ def get_all_projects():
         ), 200
 
     except SQLAlchemyError as e:
-        return jsonify({"message": f"Database error: {str(e)}"}), 500
+        return jsonify({"message": f"データベースエラー: {str(e)}"}), 500
     except Exception as e:
         logging.error(f"Error retrieving projects: {e}")
-        return jsonify({"message": f"Error retrieving projects: {str(e)}"}), 500
+        return jsonify(
+            {"message": f"プロジェクトの取得中にエラーが発生しました: {str(e)}"}
+        ), 500
 
 
 @bp.route("/projects/<int:project_id>/transfer-ownership", methods=["POST"])
@@ -385,22 +389,22 @@ def transfer_project_ownership(project_id):
         new_owner_id = data.get("new_owner_id")
 
         if not new_owner_id:
-            return jsonify({"message": "new_owner_id is required"}), 400
+            return jsonify({"message": "new_owner_id が必要です"}), 400
 
         # Get the project
         project = DB.session.get(Project, project_id)
         if not project:
-            return jsonify({"message": "Project not found"}), 404
+            return jsonify({"message": "プロジェクトが見つかりません"}), 404
 
         # Get the new owner
         new_owner = DB.session.get(User, new_owner_id)
         if not new_owner:
-            return jsonify({"message": "New owner not found"}), 404
+            return jsonify({"message": "新しい所有者が見つかりません"}), 404
 
         # Check if the new owner is different from current owner
         if project.owner_id == new_owner_id:
             return jsonify(
-                {"message": "User is already the owner of this project"}
+                {"message": "このユーザーは既にこのプロジェクトの所有者です"}
             ), 400
 
         # Store old owner reference for cleanup
@@ -428,7 +432,7 @@ def transfer_project_ownership(project_id):
 
         return jsonify(
             {
-                "message": "Project ownership transferred successfully",
+                "message": "プロジェクトの所有権が正常に移転されました",
                 "project": {
                     "id": project.id,
                     "project_id": project.project_id,
@@ -443,15 +447,15 @@ def transfer_project_ownership(project_id):
 
     except ValueError as e:
         DB.session.rollback()
-        return jsonify({"message": f"Validation error: {str(e)}"}), 400
+        return jsonify({"message": f"検証エラー: {str(e)}"}), 400
     except SQLAlchemyError as e:
         DB.session.rollback()
-        return jsonify({"message": f"Database error: {str(e)}"}), 500
+        return jsonify({"message": f"データベースエラー: {str(e)}"}), 500
     except Exception as e:
         DB.session.rollback()
         logging.error(f"Error transferring project ownership: {e}")
         return jsonify(
-            {"message": f"Error transferring project ownership: {str(e)}"}
+            {"message": f"プロジェクトの所有権移転中にエラーが発生しました: {str(e)}"}
         ), 500
 
 
@@ -463,31 +467,35 @@ def add_project_member(project_id):
         # Get the user ID from request JSON
         data = request.get_json()
         if not data or "user_id" not in data:
-            return jsonify({"message": "User ID is required"}), 400
+            return jsonify({"message": "ユーザーIDが必要です"}), 400
 
         user_id = data["user_id"]
 
         # Get project
         project = DB.session.get(Project, project_id)
         if not project:
-            return jsonify({"message": "Project not found"}), 404
+            return jsonify({"message": "プロジェクトが見つかりません"}), 404
 
         # Get user
         user = DB.session.get(User, user_id)
         if not user:
-            return jsonify({"message": "User not found"}), 404
+            return jsonify({"message": "ユーザーが見つかりません"}), 404
 
         # Check if user is already the owner
         if user.id == project.owner_id:
-            return jsonify({"message": "Cannot add project owner as member"}), 400
+            return jsonify(
+                {
+                    "message": "プロジェクト所有者をメンバーとして追加することはできません"
+                }
+            ), 400
 
         # Check if user is already a collaborator
         if user in project.collaborators:
-            return jsonify({"message": "User is already a member"}), 400
+            return jsonify({"message": "ユーザーは既にメンバーです"}), 400
 
         # Check if user has a pending invitation
         if user in project.pending_invitations:
-            return jsonify({"message": "User already has a pending invitation"}), 400
+            return jsonify({"message": "ユーザーには既に保留中の招待があります"}), 400
 
         # Add user as collaborator
         project.collaborators.append(user)
@@ -501,17 +509,19 @@ def add_project_member(project_id):
         user_props = get_user_project_properties(user, project, current_user)
 
         return jsonify(
-            {"message": "Member added successfully", "user": user_props}
+            {"message": "メンバーが正常に追加されました", "user": user_props}
         ), 200
 
     except SQLAlchemyError as e:
         DB.session.rollback()
         logging.exception(e)
-        return jsonify({"message": f"Database error: {str(e)}"}), 500
+        return jsonify({"message": f"データベースエラー: {str(e)}"}), 500
     except Exception as e:
         DB.session.rollback()
         logging.exception(e)
-        return jsonify({"message": f"Error adding member: {str(e)}"}), 500
+        return jsonify(
+            {"message": f"メンバー追加中にエラーが発生しました: {str(e)}"}
+        ), 500
 
 
 # Please note: the Task Manager is running in an independent process. It might
@@ -593,7 +603,7 @@ def get_task_queue_status():
     except Exception as e:
         logging.error(f"Error retrieving task queue status: {e}")
         return jsonify(
-            {"message": f"Error retrieving task queue status: {str(e)}"}
+            {"message": f"タスクキューの状態取得中にエラーが発生しました: {str(e)}"}
         ), 500
 
 
@@ -641,14 +651,16 @@ def reset_task_queue():
 
         return jsonify(
             {
-                "message": "Task queue reset successfully",
+                "message": "タスクキューのリセットに成功しました",
                 "cleared_waiting_tasks": waiting_count,
             }
         ), 200
 
     except Exception as e:
         logging.error(f"Error resetting task queue: {e}")
-        return jsonify({"message": f"Error resetting task queue: {str(e)}"}), 500
+        return jsonify(
+            {"message": f"タスクキューのリセット中にエラーが発生しました: {str(e)}"}
+        ), 500
 
 
 def _ensure_utc_timezone(dt):
@@ -687,18 +699,18 @@ def _get_task_manager_status():
         else:
             return {
                 "status": "no_response",
-                "error": "Task Manager connected but sent no data",
+                "error": "タスクマネージャーに接続しましたがデータが送信されませんでした",
             }
 
     except socket.timeout:
         return {
             "status": "timeout",
-            "error": "Task Manager did not respond within 3 seconds",
+            "error": "タスクマネージャーが3秒以内に応答しませんでした",
         }
     except ConnectionRefusedError:
-        return {"status": "offline", "error": "Task Manager is not running"}
+        return {"status": "offline", "error": "タスクマネージャーが起動していません"}
     except Exception as e:
         return {
             "status": "error",
-            "error": f"Failed to connect to Task Manager: {str(e)}",
+            "error": f"タスクマネージャーに接続できませんでした: {str(e)}",
         }

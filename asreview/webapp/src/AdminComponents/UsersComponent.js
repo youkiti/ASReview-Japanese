@@ -25,6 +25,7 @@ import { UserFormDialog } from "AdminComponents";
 import UserCard from "./UserCard";
 import DeleteConfirmationDialog from "./DeleteConfirmationDialog";
 import { StyledLightBulb } from "StyledComponents/StyledLightBulb";
+import { useAuth } from "hooks/useAuth";
 
 const UsersComponent = () => {
   const [selectedTab, setSelectedTab] = React.useState(0);
@@ -46,6 +47,8 @@ const UsersComponent = () => {
     refetchOnWindowFocus: false,
     retry: 2,
   });
+
+  const { isAdmin } = useAuth();
 
   // Process the users data into categories
   const processUsersData = React.useMemo(() => {
@@ -339,7 +342,7 @@ const UsersComponent = () => {
                           user={user}
                           onEdit={handleEditUser}
                           onDelete={handleDeleteUser}
-                          isAdmin={true} // TODO: Get from actual auth context
+                          isAdmin={isAdmin}
                         />
                       </Grid>
                     ))}

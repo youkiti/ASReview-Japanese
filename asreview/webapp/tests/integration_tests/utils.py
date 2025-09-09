@@ -60,7 +60,6 @@ def select_from_dropdown(driver, parent, data_value):
     WebDriverWait(driver, 60).until(EC.invisibility_of_element_located(element))
 
 
-# TODO APPLY THIS FUNCTION
 def fill_text_field_by_id(driver, field_id, value, wait_time=60):
     selector = (By.CSS_SELECTOR, f"input#{field_id}")
     WebDriverWait(driver, wait_time).until(EC.presence_of_element_located(selector))
@@ -101,7 +100,7 @@ def create_account(driver, base_url, account_data):
 
     # enter form data
     for field_id, value in form_field_values:
-        driver.find_element(By.CSS_SELECTOR, f"input#{field_id}").send_keys(value)
+        fill_text_field_by_id(driver, field_id, value)
 
     # wait until create button is clickable and enabled
     click_element(driver, "button#create-profile")
