@@ -5,3 +5,4 @@ package-lock.json
 package.json
 jsconfig.json
 tests/asreview-project-file-archive
+src/Components/SignUpForm.js
