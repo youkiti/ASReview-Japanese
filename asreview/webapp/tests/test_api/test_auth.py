@@ -153,7 +153,7 @@ def test_unsuccessful_signin_with_unconfirmed_account(client_auth_verified):
     # try to sign in
     r = au.signin_user(client_auth_verified, user)
     assert r.status_code == 404
-    assert r.json["message"] == f"User account {user.email} is not confirmed."
+    assert r.json["message"] == f"ユーザーアカウント {user.email} は確認されていません。"
 
 
 # Successfully signing in a user must return a 200 response
@@ -186,7 +186,7 @@ def test_unsuccessful_signin_wrong_password(client_auth):
     # signin
     r = au.signin_user(client_auth, user)
     assert r.status_code == 404
-    assert r.json["message"] == f"Incorrect password for user {user.identifier}."
+    assert r.json["message"] == f"ユーザー {user.identifier} のパスワードが間違っています。"
 
 
 # Wrong email must return a 404 response and with an appropriate response
@@ -203,7 +203,7 @@ def test_unsuccessful_signin_wrong_email(client_auth):
     # signin
     r = au.signin_user(client_auth, user)
     assert r.status_code == 404
-    assert r.json["message"] == f"User account {user.identifier} does not exist."
+    assert r.json["message"] == f"ユーザーアカウント {user.identifier} は存在しません。"
 
 
 # ###################
@@ -347,7 +347,7 @@ def test_get_profile_if_user_id_does_not_exist(client_auth):
     # get profile
     r = au.get_profile(client_auth)
     assert r.status_code == 404
-    assert r.json["message"] == "No user found."
+    assert r.json["message"] == "ユーザーが見つかりませんでした。"
 
 
 # #####################
@@ -509,7 +509,7 @@ def test_update_user_profile_simple_attributes(client_auth):
     # call update
     r = au.update_user(client_auth, data)
     assert r.status_code == 200
-    assert r.json["message"] == "User profile updated."
+    assert r.json["message"] == "ユーザープロフィールが更新されました。"
 
 
 # test correctly updating the password
@@ -531,7 +531,7 @@ def test_correctly_update_password(client_auth):
     # call update
     r = au.update_user(client_auth, data)
     assert r.status_code == 200
-    assert r.json["message"] == "User profile updated."
+    assert r.json["message"] == "ユーザープロフィールが更新されました。"
     # Checking if new password works: signout first
     au.signout_user(client_auth)
     # signin with new password
@@ -693,7 +693,7 @@ def test_delete_account_blocked_when_owns_projects(client_auth):
     r = au.delete_account(client_auth)
     assert r.status_code == 400
     assert "You still own projects" in r.json["message"]
-    assert "transfer ownership or delete them" in r.json["message"]
+    assert "管理者に所有権を譲渡してもらうか、プロジェクトを削除してもらってください" in r.json["message"]
 
 
 # Test cannot delete the only admin account
@@ -707,7 +707,7 @@ def test_delete_account_blocked_when_only_admin(client_auth):
     r = au.delete_account(client_auth)
     assert r.status_code == 400
     assert "Cannot delete the only admin account" in r.json["message"]
-    assert "create another admin account first" in r.json["message"]
+    assert "先に別の管理者アカウントを作成してください" in r.json["message"]
 
 
 # Test admin can delete account when there are multiple admins

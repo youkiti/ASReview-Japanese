@@ -122,7 +122,7 @@ def test_create_user_as_admin(client_auth):
 
     assert response.status_code == 201
     data = response.get_json()
-    assert data["message"] == "User created successfully"
+    assert data["message"] == "ユーザーが正常に作成されました"
     assert data["user"]["identifier"] == new_user_data["identifier"]
     assert data["user"]["role"] == "member"
 
@@ -195,7 +195,7 @@ def test_create_user_duplicate_identifier(client_auth):
 
     assert response.status_code == 409
     data = response.get_json()
-    assert "already exists" in data["message"]
+    assert "既に存在します" in data["message"]
 
 
 def test_create_user_as_non_admin_forbidden(client_auth):
@@ -259,7 +259,7 @@ def test_update_user_as_admin(client_auth):
 
     assert response.status_code == 200
     data = response.get_json()
-    assert data["message"] == "User updated successfully"
+    assert data["message"] == "ユーザーが正常に更新されました"
     assert data["user"]["name"] == "Updated Name"
     assert data["user"]["role"] == "admin"
 
@@ -293,7 +293,7 @@ def test_update_nonexistent_user(client_auth):
 
     assert response.status_code == 404
     data = response.get_json()
-    assert data["message"] == "User not found"
+    assert data["message"] == "ユーザーが見つかりません"
 
 
 def test_update_user_as_non_admin_forbidden(client_auth):
@@ -353,7 +353,7 @@ def test_delete_user_as_admin(client_auth):
 
     assert response.status_code == 200
     data = response.get_json()
-    assert data["message"] == "User deleted successfully"
+    assert data["message"] == "ユーザーが正常に削除されました"
     assert data["deleted_user"]["identifier"] == regular_user.identifier
 
     # Verify user was deleted from database
@@ -379,7 +379,7 @@ def test_delete_nonexistent_user(client_auth):
 
     assert response.status_code == 404
     data = response.get_json()
-    assert data["message"] == "User not found"
+    assert data["message"] == "ユーザーが見つかりません"
 
 
 def test_delete_user_as_non_admin_forbidden(client_auth):
@@ -453,7 +453,7 @@ def test_get_single_nonexistent_user(client_auth):
 
     assert response.status_code == 404
     data = response.get_json()
-    assert data["message"] == "User not found"
+    assert data["message"] == "ユーザーが見つかりません"
 
 
 def test_get_single_user_as_non_admin_forbidden(client_auth):
@@ -617,7 +617,7 @@ def test_transfer_ownership_to_non_member(client_auth):
 
     assert response.status_code == 200
     data = response.get_json()
-    assert data["message"] == "Project ownership transferred successfully"
+    assert data["message"] == "プロジェクトの所有権が正常に移転されました"
     assert data["project"]["new_owner"]["id"] == user2_obj.id
     assert data["project"]["new_owner"]["name"] == user2_obj.name
 
@@ -670,7 +670,7 @@ def test_transfer_ownership_to_existing_collaborator(client_auth):
 
     assert response.status_code == 200
     data = response.get_json()
-    assert data["message"] == "Project ownership transferred successfully"
+    assert data["message"] == "プロジェクトの所有権が正常に移転されました"
     assert data["project"]["new_owner"]["id"] == user2_obj.id
 
     # Verify final state - user2 is owner and removed from collaborators, user1 is completely removed
@@ -723,7 +723,7 @@ def test_transfer_ownership_to_user_with_pending_invitation(client_auth):
 
     assert response.status_code == 200
     data = response.get_json()
-    assert data["message"] == "Project ownership transferred successfully"
+    assert data["message"] == "プロジェクトの所有権が正常に移転されました"
     assert data["project"]["new_owner"]["id"] == user2_obj.id
 
     # Verify final state - user2 is owner and removed from pending invitations, user1 is completely removed
@@ -767,7 +767,7 @@ def test_transfer_ownership_to_current_owner_fails(client_auth):
 
     assert response.status_code == 400
     data = response.get_json()
-    assert data["message"] == "User is already the owner of this project"
+    assert data["message"] == "このユーザーは既にこのプロジェクトの所有者です"
 
 
 def test_transfer_ownership_nonexistent_project(client_auth):
@@ -795,7 +795,7 @@ def test_transfer_ownership_nonexistent_project(client_auth):
 
     assert response.status_code == 404
     data = response.get_json()
-    assert data["message"] == "Project not found"
+    assert data["message"] == "プロジェクトが見つかりません"
 
 
 def test_transfer_ownership_nonexistent_user(client_auth):
@@ -825,7 +825,7 @@ def test_transfer_ownership_nonexistent_user(client_auth):
 
     assert response.status_code == 404
     data = response.get_json()
-    assert data["message"] == "New owner not found"
+    assert data["message"] == "新しい所有者が見つかりません"
 
 
 def test_transfer_ownership_missing_new_owner_id(client_auth):
@@ -855,7 +855,7 @@ def test_transfer_ownership_missing_new_owner_id(client_auth):
 
     assert response.status_code == 400
     data = response.get_json()
-    assert data["message"] == "new_owner_id is required"
+    assert data["message"] == "new_owner_id が必要です"
 
 
 def test_transfer_ownership_as_non_admin_forbidden(client_auth):
@@ -943,7 +943,7 @@ def test_add_member_to_project_as_admin(client_auth):
 
     assert response.status_code == 200
     data = response.get_json()
-    assert data["message"] == "Member added successfully"
+    assert data["message"] == "メンバーが正常に追加されました"
     assert data["user"]["id"] == user2_obj.id
     assert data["user"]["member"] is True
     assert data["user"]["owner"] is False
@@ -984,7 +984,7 @@ def test_add_member_to_project_already_owner_fails(client_auth):
 
     assert response.status_code == 400
     data = response.get_json()
-    assert data["message"] == "Cannot add project owner as member"
+    assert data["message"] == "プロジェクト所有者をメンバーとして追加することはできません"
 
 
 def test_add_member_to_project_already_member_fails(client_auth):
@@ -1019,7 +1019,7 @@ def test_add_member_to_project_already_member_fails(client_auth):
 
     assert response.status_code == 400
     data = response.get_json()
-    assert data["message"] == "User is already a member"
+    assert data["message"] == "ユーザーは既にメンバーです"
 
 
 def test_add_member_to_project_with_pending_invitation_fails(client_auth):
@@ -1054,7 +1054,7 @@ def test_add_member_to_project_with_pending_invitation_fails(client_auth):
 
     assert response.status_code == 400
     data = response.get_json()
-    assert data["message"] == "User already has a pending invitation"
+    assert data["message"] == "ユーザーには既に保留中の招待があります"
 
 
 def test_add_member_nonexistent_project_fails(client_auth):
@@ -1082,7 +1082,7 @@ def test_add_member_nonexistent_project_fails(client_auth):
 
     assert response.status_code == 404
     data = response.get_json()
-    assert data["message"] == "Project not found"
+    assert data["message"] == "プロジェクトが見つかりません"
 
 
 def test_add_member_nonexistent_user_fails(client_auth):
@@ -1112,7 +1112,7 @@ def test_add_member_nonexistent_user_fails(client_auth):
 
     assert response.status_code == 404
     data = response.get_json()
-    assert data["message"] == "User not found"
+    assert data["message"] == "ユーザーが見つかりません"
 
 
 def test_add_member_missing_user_id_fails(client_auth):
@@ -1142,7 +1142,7 @@ def test_add_member_missing_user_id_fails(client_auth):
 
     assert response.status_code == 400
     data = response.get_json()
-    assert data["message"] == "User ID is required"
+    assert data["message"] == "ユーザーIDが必要です"
 
 
 def test_add_member_as_non_admin_forbidden(client_auth):
